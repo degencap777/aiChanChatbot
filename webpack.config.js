@@ -2,7 +2,27 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+module.exports = [{
+  target: 'node',
+  entry: process.env.NODE_ENV === 'development'? undefined:['./server'],
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].server.bundle.js',
+    chunkFilename: '[name].server.chunk.js',
+		publicPath: '/'
+  },
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx']
+  },
+  module: {
+    rules: [{
+      test: /\.tsx?$/,
+      use: [{
+        loader: 'ts-loader'
+      }]
+    }]
+  }
+}, {
   devtool: 'eval',
   entry: process.env.NODE_ENV === 'development'? [
     'webpack-dev-server/client?',
@@ -10,8 +30,8 @@ module.exports = {
   ]:['./src'],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].chunk.js',
+    filename: '[name].react.bundle.js',
+    chunkFilename: '[name].react.chunk.js',
 		publicPath: '/'
   },
   resolve: {
@@ -44,4 +64,4 @@ module.exports = {
       'PREFIX': JSON.stringify(process.env.PREFIX? process.env.PREFIX : '!')
     })
   ]
-}
+}]

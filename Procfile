@@ -1,1 +1,1 @@
-server: cd dist && NODE_ENV=production serve --port 80
+server: NODE_ENV=production node dist/main.server.bundle.js
