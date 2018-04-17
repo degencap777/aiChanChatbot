@@ -33,8 +33,8 @@ class DemoSection extends React.Component<DemoSectionProps, DemoSectionState> {
     const {classes} = this.props
     return (
       <div>
-        <Grid container classes={{typeContainer:classes.demoRow}}>
-          <Grid item xs={12} md={6} classes={{typeItem:classes.demoColumn}}>
+        <Grid container classes={{container:classes.demoRow} as any}>
+          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
             <Card classes={{root:classes.demoCard}}>
               <CardContent>
                 <Typography variant='headline' component='h2'>
@@ -50,15 +50,15 @@ class DemoSection extends React.Component<DemoSectionProps, DemoSectionState> {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} md={6} classes={{typeItem:classes.demoColumn}}>
+          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
             <img src={WeaponDemo} className={classes.demoImage}/>
           </Grid>
         </Grid>
-        <Grid container classes={{typeContainer:classes.demoRow}}>
-          <Grid item xs={12} md={6} classes={{typeItem:classes.demoColumn}}>
+        <Grid container classes={{container:classes.demoRow} as any}>
+          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
             <img src={GachaDemo} className={classes.demoImage}/>
           </Grid>
-          <Grid item xs={12} md={6} classes={{typeItem:classes.demoColumn}}>
+          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
             <Card classes={{root:classes.demoCard}}>
               <CardContent>
                 <Typography variant='headline' component='h2'>
@@ -74,8 +74,8 @@ class DemoSection extends React.Component<DemoSectionProps, DemoSectionState> {
             </Card>
           </Grid>
         </Grid>
-        <Grid container classes={{typeContainer:classes.demoRow}}>
-          <Grid item xs={12} md={6} classes={{typeItem:classes.demoColumn}}>
+        <Grid container classes={{container:classes.demoRow} as any}>
+          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
             <Card classes={{root:classes.demoCard}}>
               <CardContent>
                 <Typography variant='headline' component='h2'>
@@ -91,15 +91,15 @@ class DemoSection extends React.Component<DemoSectionProps, DemoSectionState> {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} md={6} classes={{typeItem:classes.demoColumn}}>
+          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
             <img src={ValkyrieDemo} className={classes.demoImage}/>
           </Grid>
         </Grid>
-        <Grid container classes={{typeContainer:classes.demoRow}}>
-          <Grid item xs={12} md={6} classes={{typeItem:classes.demoColumn}}>
+        <Grid container classes={{container:classes.demoRow} as any}>
+          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
             <img src={RecommendationDemo} className={classes.demoImage}/>
           </Grid>
-          <Grid item xs={12} md={6} classes={{typeItem:classes.demoColumn}}>
+          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
             <Card classes={{root:classes.demoCard}}>
               <CardContent>
                 <Typography variant='headline' component='h2'>

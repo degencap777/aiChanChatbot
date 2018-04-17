@@ -1,1 +1,1 @@
-server: NODE_ENV=production node dist/main.server.bundle.js
+server: NODE_ENV=production node server.js

@@ -59,9 +59,9 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
     const {classes} = this.props
     return (
       <div className={classes.container}>
-        <Grid container direction='column' alignItems='center' classes={{typeContainer:classes.pageContainer}}>
+        <Grid container direction='column' alignItems='center' classes={{container:classes.pageContainer} as any}>
           <img src={AiChan} className={classes.aiChanWelcome}/>
-          <Grid container classes={{typeContainer:classes.dividerRow}}>
+          <Grid container classes={{container:classes.dividerRow} as any}>
             <Divider classes={{root:classes.divider}}/>
             <Button href='https://discordapp.com/oauth2/authorize?client_id=434737143395516416&permissions=8&scope=bot' variant='raised' size='large' color='primary'>
               INVITE ME
@@ -69,7 +69,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
             <Divider classes={{root:classes.divider}}/>
           </Grid>
           <DemoSection/>
-          <Grid container classes={{typeContainer:classes.dividerRow}}>
+          <Grid container classes={{container:classes.dividerRow} as any}>
             <Divider classes={{root:classes.divider}}/>
             <Typography variant='title'>
               COMMANDS
@@ -79,7 +79,7 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
           <CommandSection/>
         </Grid>
         <div className={classes.footer}>
-          <Grid container justify='space-between' alignItems='center' classes={{typeContainer:classes.pageContainer}}>
+          <Grid container justify='space-between' alignItems='center' classes={{container:classes.pageContainer} as any}>
             <Typography variant='caption'>
               Developed by: Ching Yaw Hao, Yudhaime 
             </Typography>
