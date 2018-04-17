@@ -7,4 +7,4 @@ http.createServer((request, response) => {
   request.addListener('end', () => {
     file.serve(request, response)
   }).resume()
-}).listen(process.env.PORT || 80)
+}).listen(PORT || 80)
