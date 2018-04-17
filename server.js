@@ -6,5 +6,5 @@ var app = express()
 app.use(express.static(path.join(__dirname, 'dist')))
 
 var server = app.listen(process.env.PORT || 8080, '0.0.0.0', () => {
-  console.log('listening on port ', server.address().port)
+  console.log('Express listening on port ', server.address().port)
 })
