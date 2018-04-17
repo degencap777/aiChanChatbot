@@ -1,0 +1,33 @@
+{
+  "name": "ai-chan-landing",
+  "version": "0.0.1",
+  "description": "React components following Microsoft's fluent design vision",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "postinstall": "npm run compile",
+    "start": "NODE_ENV=development PREFIX=! webpack-dev-server --content-base app --history-api-fallback",
+    "compile": "NODE_ENV=production PREFIX=! webpack --display-error-details",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.42",
+    "classnames": "^2.2.5",
+    "material-ui": "^1.0.0-beta.41",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "typescript": "^2.7.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.38",
+    "@types/react-dom": "^16.0.4",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "^4.0.0",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.1.0"
+  }
+}

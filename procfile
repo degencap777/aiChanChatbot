@@ -1,0 +1,1 @@
+server: cd dist && NODE_ENV=production serve --port 80
