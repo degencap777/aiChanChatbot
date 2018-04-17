@@ -21,12 +21,7 @@ module.exports = [{
         loader: 'ts-loader'
       }]
     }]
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'PORT': JSON.stringify(process.env.PORT? process.env.PORT : 80)
-    })
-  ]
+  }
 }, {
   devtool: 'eval',
   entry: process.env.NODE_ENV === 'development'? [
