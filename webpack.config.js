@@ -10,8 +10,8 @@ module.exports = {
   ]:['./src'],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].react.bundle.js',
-    chunkFilename: '[name].react.chunk.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].chunk.js',
 		publicPath: '/'
   },
   resolve: {
