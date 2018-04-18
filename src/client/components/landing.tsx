@@ -1,5 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import * as ReSub from 'resub'
 import {withStyles, Theme, StyleRules, StyleRulesCallback} from 'material-ui/styles'
 import {blue, lightGreen, grey} from 'material-ui/colors'
 import Grid from 'material-ui/Grid'
@@ -8,6 +9,7 @@ import Divider from 'material-ui/Divider'
 import Button from 'material-ui/Button'
 
 import * as AiChan from '../../asset/ai-chan.png'
+import screenStore from '../store/screen'
 import DemoSection from './demo-section'
 import CommandSection from './command-section'
 
@@ -25,7 +27,11 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background: `linear-gradient(to top right, #E4FAB5, #B2FB16)`
+    background: `linear-gradient(to top right, #E4FAB5, #B2FB16)`,
+    overflow: 'hidden',
+    [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
+      flexDirection: 'column'
+    }
   },
   pageContainer: {
     width: '1200px',
@@ -36,10 +42,15 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
     }
   },
   headerText: {
-    textAlign: 'right'
+    margin: '32px 0 0',
+    textAlign: 'right',
+    [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
+      textAlign: 'center'
+    }
   },
   aiChanWelcome: {
-    width: '300px'
+    width: '300px',
+    marginBottom: '-73px'
   },
   dividerButtons: {
     transform: 'translateY(-50%)',
@@ -72,20 +83,26 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
   }
 })
 @(withStyles as any)(styles)
-class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
+class LandingPage extends ReSub.ComponentBase<LandingPageProps, LandingPageState> {
+  protected _buildState(props:{}, initial:boolean):LandingPageState {
+    return {
+      screenType: screenStore.type()
+    }
+  }
   componentDidMount() {
     document.querySelector('body').style.background = grey[800]
   }
   render() {
     const {classes} = this.props
+    const {screenType} = this.state
     return (
       <div className={classes.container}>
         <div className={classes.headerContainer}>
           <div className={classes.headerText}>
-            <Typography variant='display4' color='secondary'>
+            <Typography variant={['sm-tablet', 'xs-phone'].includes(screenType)? 'display3':'display4'} color='secondary'>
               Ai-Chan Bot
             </Typography>
-            <Typography variant='display1' color='primary'>
+            <Typography variant={['sm-tablet', 'xs-phone'].includes(screenType)? 'title':'display1'} color='primary'>
               comes to your discord
             </Typography>
           </div>
@@ -131,6 +148,8 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
 interface LandingPageProps extends React.Props<{}> {
   classes?: any
 }
-interface LandingPageState {}
+interface LandingPageState {
+  screenType: 'xl-desktop' | 'lg-desktop' | 'md-desktop' | 'sm-tablet' | 'xs-phone'
+}
 
 export default LandingPage
