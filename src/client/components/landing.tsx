@@ -35,6 +35,9 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
       padding: '0 16px',
     }
   },
+  headerText: {
+    textAlign: 'right'
+  },
   aiChanWelcome: {
     width: '300px'
   },
@@ -78,6 +81,14 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
     return (
       <div className={classes.container}>
         <div className={classes.headerContainer}>
+          <div className={classes.headerText}>
+            <Typography variant='display4' color='secondary'>
+              Ai-Chan Bot
+            </Typography>
+            <Typography variant='display1' color='primary'>
+              comes to your discord
+            </Typography>
+          </div>
           <img src={AiChan} className={classes.aiChanWelcome}/>
         </div>
         <Grid container direction='column' alignItems='center' classes={{container:classes.pageContainer} as any}>
@@ -105,10 +116,10 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
         </Grid>
         <div className={classes.footer}>
           <Grid container justify='space-between' alignItems='center' classes={{container:classes.pageContainer} as any}>
-            <Typography variant='caption'>
+            <Typography variant='caption' color='primary'>
               Developed by: Ching Yaw Hao, Yudhaime 
             </Typography>
-            <Typography variant='caption'>
+            <Typography variant='caption' color='primary'>
               <a className={classes.link} href='https://discord.gg/4y2RzFy'>Try It</a> | <a className={classes.link} href='https://www.patreon.com/user?u=10662508'>Support Us</a> 
             </Typography>
           </Grid>
