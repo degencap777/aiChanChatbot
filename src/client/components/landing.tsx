@@ -37,9 +37,15 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
     justifyContent: 'space-between',
     alignItems: 'center'
   },
+  dividerButton: {
+    margin: '8px'
+  },
+  dividerButtons: {
+    textAlign: 'center'
+  },
   divider: {
     flexGrow: 1,
-    margin: '0 16px'
+    margin: '16px'
   },
   link: {
     color: 'inherit',
@@ -51,13 +57,13 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    background: theme.palette.background.paper
+    background: grey[900]
   }
 })
 @(withStyles as any)(styles)
 class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
   componentDidMount() {
-    document.querySelector('body').style.background = `linear-gradient(to bottom right, ${lightGreen[800]}, ${grey[800]})`
+    document.querySelector('body').style.background = grey[800]
   }
   render() {
     const {classes} = this.props
@@ -67,9 +73,18 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
           <img src={AiChan} className={classes.aiChanWelcome}/>
           <Grid container classes={{container:classes.dividerRow} as any}>
             <Divider classes={{root:classes.divider}}/>
-            <Button href='https://discordapp.com/oauth2/authorize?client_id=434737143395516416&permissions=8&scope=bot' variant='raised' size='large' color='primary'>
-              INVITE ME
-            </Button>
+            <div className={classes.dividerButtons}>
+              <Button classes={{root:classes.dividerButton}} variant='raised' size='large' color='primary'
+                href='https://discordapp.com/oauth2/authorize?client_id=434737143395516416&permissions=8&scope=bot'
+              >
+                INVITE ME
+              </Button>
+              <Button classes={{root:classes.dividerButton}} variant='raised' size='large' color='primary'
+                href='https://www.patreon.com/user?u=10662508'
+              >
+                SUPPORT US
+              </Button>
+            </div>
             <Divider classes={{root:classes.divider}}/>
           </Grid>
           <DemoSection/>
