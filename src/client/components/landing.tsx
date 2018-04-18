@@ -20,6 +20,13 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
     justifyContent: 'center',
     alignItems: 'center'
   },
+  headerContainer: {
+    width: '100vw',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: `linear-gradient(to top right, #E4FAB5, #B2FB16)`
+  },
   pageContainer: {
     width: '1200px',
     maxWidth: '100%',
@@ -31,17 +38,18 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
   aiChanWelcome: {
     width: '300px'
   },
+  dividerButtons: {
+    transform: 'translateY(-50%)',
+    textAlign: 'center'
+  },
+  dividerButton: {
+    margin: '8px'
+  },
   dividerRow: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
-  },
-  dividerButton: {
-    margin: '8px'
-  },
-  dividerButtons: {
-    textAlign: 'center'
   },
   divider: {
     flexGrow: 1,
@@ -69,23 +77,21 @@ class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
     const {classes} = this.props
     return (
       <div className={classes.container}>
-        <Grid container direction='column' alignItems='center' classes={{container:classes.pageContainer} as any}>
+        <div className={classes.headerContainer}>
           <img src={AiChan} className={classes.aiChanWelcome}/>
-          <Grid container classes={{container:classes.dividerRow} as any}>
-            <Divider classes={{root:classes.divider}}/>
-            <div className={classes.dividerButtons}>
-              <Button classes={{root:classes.dividerButton}} variant='raised' size='large' color='primary'
-                href='https://discordapp.com/oauth2/authorize?client_id=434737143395516416&permissions=8&scope=bot'
-              >
-                INVITE ME
-              </Button>
-              <Button classes={{root:classes.dividerButton}} variant='raised' size='large' color='primary'
-                href='https://www.patreon.com/user?u=10662508'
-              >
-                SUPPORT US
-              </Button>
-            </div>
-            <Divider classes={{root:classes.divider}}/>
+        </div>
+        <Grid container direction='column' alignItems='center' classes={{container:classes.pageContainer} as any}>
+          <Grid container justify='center' classes={{container:classes.dividerButtons} as any}>
+            <Button classes={{root:classes.dividerButton}} variant='raised' size='large' color='secondary'
+              href='https://discordapp.com/oauth2/authorize?client_id=434737143395516416&permissions=8&scope=bot'
+            >
+              INVITE ME
+            </Button>
+            <Button classes={{root:classes.dividerButton}} variant='raised' size='large' color='secondary'
+              href='https://www.patreon.com/user?u=10662508'
+            >
+              SUPPORT US
+            </Button>
           </Grid>
           <DemoSection/>
           <Grid container classes={{container:classes.dividerRow} as any}>
