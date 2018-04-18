@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import {withStyles, Theme, WithStyles} from 'material-ui/styles'
+import {withStyles, Theme, WithStyles, StyleRules, StyleRulesCallback} from 'material-ui/styles'
 import {grey} from 'material-ui/colors'
 import Typography from 'material-ui/Typography'
 import ExpansionPanel, {ExpansionPanelSummary, ExpansionPanelDetails} from 'material-ui/ExpansionPanel'
@@ -9,15 +9,28 @@ import {ExpandMore as ExpandMoreIcon} from '@material-ui/icons'
 import helps from '../constants/helps'
 import * as StringUtil from '../utility/string'
 
-const styles = (theme:Theme):Record<string, React.CSSProperties> => ({
+const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => ({
   commandSection: {
     padding: '32px 0 64px'
   },
   commandPanel: {
-    background: grey[900]
+    background: theme.palette.background.paper
+  },
+  commandTitleContainer: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
+      flexDirection: 'column',
+      alignItems: 'flex-start'
+    }
   },
   commandTitle: {
-    flexBasis: '50%'
+    flexBasis: '50%',
+    [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
+      flexBasis: 'auto'
+    }
   },
   commandSubheading: {
     marginTop: '12px'
@@ -47,13 +60,20 @@ class CommandSection extends React.Component<CommandSectionProps, CommandSection
     return (
       <div className={classes.commandSection}>
         {helps.map(help =>
-          <ExpansionPanel disabled={help.description === ''} expanded={help.commands[0] === active} onChange={() => this.expand(help.commands[0])} classes={{root:classes.commandPanel}}>
+          <ExpansionPanel disabled={help.description === ''}
+            key={help.commands[0]}
+            expanded={help.commands[0] === active}
+            onChange={() => this.expand(help.commands[0])}
+            classes={{root:classes.commandPanel}}
+          >
             <ExpansionPanelSummary expandIcon={help.description !== '' && <ExpandMoreIcon/>}>
-              <div className={classes.commandTitle}>
-                <Typography variant='subheading'>{StringUtil.conjuctJoin(help.commands.map(command => PREFIX + command))}</Typography>
-              </div>
-              <div className={classes.commandTitle}>
-                <Typography variant='caption'>{help.category}</Typography>
+              <div className={classes.commandTitleContainer}>
+                <div className={classes.commandTitle}>
+                  <Typography variant='subheading'>{StringUtil.conjuctJoin(help.commands.map(command => PREFIX + command))}</Typography>
+                </div>
+                <div className={classes.commandTitle}>
+                  <Typography variant='caption'>{help.category}</Typography>
+                </div>
               </div>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.commandDetail}>
@@ -62,14 +82,14 @@ class CommandSection extends React.Component<CommandSectionProps, CommandSection
                 {help.description}
               </Typography>
               {help.examples.length > 0 && <Typography className={classes.commandSubheading} variant='caption' component='h5'>Examples</Typography>}
-              {help.examples.map(example =>
-                <Typography component='p'>
+              {help.examples.map((example, index) =>
+                <Typography key={index} component='p'>
                   {PREFIX + example}
                 </Typography>
               )}
               {help.notes.length > 0 && <Typography className={classes.commandSubheading} variant='caption' component='h5'>Notes</Typography>}
-              {help.notes.map(note =>
-                <Typography component='p'>
+              {help.notes.map((note, index) =>
+                <Typography key={index} component='p'>
                   {note}
                 </Typography>
               )}

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import {withStyles, Theme} from 'material-ui/styles'
+import {withStyles, Theme, StyleRules, StyleRulesCallback} from 'material-ui/styles'
 import {grey} from 'material-ui/colors'
 import Grid from 'material-ui/Grid'
 import Typography from 'material-ui/Typography'
@@ -11,7 +11,7 @@ import * as GachaDemo from '../../asset/gacha-demo.png'
 import * as ValkyrieDemo from '../../asset/valkyrie-demo.png'
 import * as RecommendationDemo from '../../asset/recommendation-demo.png'
 
-const styles = (theme:Theme):Record<string, React.CSSProperties> => ({
+const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => ({
   demoRow: {
     padding: '32px 0'
   },
@@ -21,7 +21,7 @@ const styles = (theme:Theme):Record<string, React.CSSProperties> => ({
     alignItems: 'center',
   },
   demoCard: {
-    background: grey[900]
+    background: theme.palette.background.paper
   },
   demoImage: {
     maxWidth: '100%'

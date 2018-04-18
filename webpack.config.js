@@ -2,20 +2,46 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+module.exports = [process.env.NODE_ENV === 'development'? undefined:{
+  mode: process.env.NODE_ENV,
+  devtool: 'eval',
+  target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false
+  },
+  entry: ['./src/server'],
+  output: {
+    path: path.join(__dirname, 'dist/server'),
+    filename: '[name].bundle.js',
+		publicPath: '/'
+  },
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx']
+  },
+  module: {
+    rules: [{
+      test: /\.tsx?$/,
+      use: [{
+        loader: 'ts-loader'
+      }]
+    }]
+  }
+}, {
+  mode: process.env.NODE_ENV,
   devtool: 'eval',
   entry: process.env.NODE_ENV === 'development'? [
     'webpack-dev-server/client?',
-    './src'
-  ]:['./src'],
+    './src/client'
+  ]:['./src/client'],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/client'),
     filename: '[name].bundle.js',
     chunkFilename: '[name].chunk.js',
 		publicPath: '/'
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx']
+    extensions: ['.js', '.ts', '.tsx', '.jpg', '.jpeg', '.png', '.gif', '.svg', '.mov', '.ttf', '.eot', '.woff', '.woff2']
   },
   module: {
     rules: [{
@@ -44,4 +70,4 @@ module.exports = {
       'PREFIX': JSON.stringify(process.env.PREFIX? process.env.PREFIX : '!')
     })
   ]
-}
+}].filter(module => !!module)

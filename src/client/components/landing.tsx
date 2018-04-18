@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import {MuiThemeProvider, withStyles, Theme, WithStyles} from 'material-ui/styles'
-import {blue, grey} from 'material-ui/colors'
+import {withStyles, Theme, StyleRules, StyleRulesCallback} from 'material-ui/styles'
+import {blue, lightGreen, grey} from 'material-ui/colors'
 import Grid from 'material-ui/Grid'
 import Typography from 'material-ui/Typography'
 import Divider from 'material-ui/Divider'
@@ -11,7 +11,7 @@ import * as AiChan from '../../asset/ai-chan.png'
 import DemoSection from './demo-section'
 import CommandSection from './command-section'
 
-const styles = (theme:Theme):Record<string, React.CSSProperties> => ({
+const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => ({
   container: {
     width: '100vw',
     minHeight: '100vh',
@@ -23,7 +23,10 @@ const styles = (theme:Theme):Record<string, React.CSSProperties> => ({
   pageContainer: {
     width: '1200px',
     maxWidth: '100%',
-    padding: '0 32px'
+    padding: '0 32px',
+    [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
+      padding: '0 16px',
+    }
   },
   aiChanWelcome: {
     width: '300px'
@@ -35,7 +38,8 @@ const styles = (theme:Theme):Record<string, React.CSSProperties> => ({
     alignItems: 'center'
   },
   divider: {
-    width: 'calc(50% - 120px)'
+    flexGrow: 1,
+    margin: '0 16px'
   },
   link: {
     color: 'inherit',
@@ -47,13 +51,13 @@ const styles = (theme:Theme):Record<string, React.CSSProperties> => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    background: grey[900]
+    background: theme.palette.background.paper
   }
 })
 @(withStyles as any)(styles)
 class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
   componentDidMount() {
-    document.querySelector('body').style.background = grey[800]
+    document.querySelector('body').style.background = `linear-gradient(to bottom right, ${lightGreen[800]}, ${grey[800]})`
   }
   render() {
     const {classes} = this.props

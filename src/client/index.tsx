@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as classnames from 'classnames'
 import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles'
-import {lightGreen} from 'material-ui/colors'
+import {lightGreen, grey} from 'material-ui/colors'
 
 import LandingPage from './components/landing'
 
@@ -14,6 +14,9 @@ const theme = createMuiTheme({
       main: lightGreen[500],
       dark: lightGreen[700],
       contrastText: 'white'
+    },
+    background: {
+      paper: grey[900]
     }
   }
 })
