@@ -14,7 +14,11 @@ import * as RecommendationDemo from '../../asset/recommendation-demo.png'
 
 const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => ({
   demoRow: {
+    display: 'flex',
     padding: '32px 0'
+  },
+  demoRowEven: {
+    flexDirection: 'row-reverse'
   },
   demoColumn: {
     display: 'flex',
@@ -38,83 +42,57 @@ class DemoSection extends React.Component<DemoSectionProps, DemoSectionState> {
     const {classes} = this.props
     return (
       <div>
-        <Grid container classes={{container:classes.demoRow} as any}>
-          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
-            <div className={classes.description}>
-              <Typography variant='headline' color='primary' component='h2'>
-                Show & Describe Game Equipment
-              </Typography>
-              <Typography color='textSecondary' gutterBottom>
-                command: !weapon, !stigmata
-              </Typography>
-              <Typography component='p'>
-                You don't need to take screenshot and upload it to show info about game equipment.<br/>
-                AI Chan will display it for you.
-              </Typography>
-            </div>
+        {[{
+          headline: 'Show & Describe Game Equipment',
+          command: 'command: !weapon, !stigmata',
+          description: [
+            'You don\'t need to take screenshot and upload it to show info about game equipment.',
+            'AI Chan will display it for you.'
+          ],
+          image: WeaponDemo
+        }, {
+          headline: 'Gacha Simulation',
+          command: 'command: !gacha',
+          description: [
+            'Yeah, AI Chan know you are really like gacha system in Honkai Inpact 3rd so I bring simulation to your server to enhance your luck. (maybe)'
+          ],
+          image: GachaDemo
+        }, {
+          headline: 'Show & Describe Valkyrie',
+          command: 'command: !valkyrie',
+          description: [
+            'Here is the secret about the gals!',
+            'But however hard you try you will be able to see her panties!'
+          ],
+          image: ValkyrieDemo
+        }, {
+          headline: 'Recommend Equipments',
+          command: 'command: !recommend',
+          description: [
+            'You can see better set equipment for the valkyrie too...'
+          ],
+          image: RecommendationDemo
+        }].map((demo, index) => [
+          index !== 0 && <Divider/>,
+          <Grid container classes={{container:classes.demoRow + (index % 2 === 1? ' ' + classes.demoRowEven : '')} as any}>
+            <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
+              <div className={classes.description}>
+                <Typography variant='headline' color='primary' component='h2'>
+                  {demo.headline}
+                </Typography>
+                <Typography color='textSecondary' gutterBottom>
+                  {demo.command}
+                </Typography>
+                <Typography component='p'>
+                  {demo.description.map((description, index) => [index !== 0 && <br/>, description])}
+                </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
+              <img src={demo.image} className={classes.demoImage}/>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
-            <img src={WeaponDemo} className={classes.demoImage}/>
-          </Grid>
-        </Grid>
-        <Divider/>
-        <Grid container classes={{container:classes.demoRow} as any}>
-          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
-            <img src={GachaDemo} className={classes.demoImage}/>
-          </Grid>
-          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
-            <div className={classes.description}>
-              <Typography variant='headline' color='primary' component='h2'>
-                Gacha Simulation
-              </Typography>
-              <Typography color='textSecondary' gutterBottom>
-                command: !gacha
-              </Typography>
-              <Typography component='p'>
-                Yeah, AI Chan know you are really like gacha system in Honkai Inpact 3rd so I bring simulation to your server to enhance your luck. (maybe)
-              </Typography>
-            </div>
-          </Grid>
-        </Grid>
-        <Divider/>
-        <Grid container classes={{container:classes.demoRow} as any}>
-          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
-            <div className={classes.description}>
-              <Typography variant='headline' color='primary' component='h2'>
-                Show & Describe Valkyrie
-              </Typography>
-              <Typography color='textSecondary' gutterBottom>
-                command: !valkyrie
-              </Typography>
-              <Typography component='p'>
-                Here is the secret about the gals!<br/>
-                But however hard you try you will be able to see her panties!
-              </Typography>
-            </div>
-          </Grid>
-          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
-            <img src={ValkyrieDemo} className={classes.demoImage}/>
-          </Grid>
-        </Grid>
-        <Divider/>
-        <Grid container classes={{container:classes.demoRow} as any}>
-          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
-            <img src={RecommendationDemo} className={classes.demoImage}/>
-          </Grid>
-          <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
-            <div className={classes.description}>
-              <Typography variant='headline' color='primary' component='h2'>
-                Recommend Equipments
-              </Typography>
-              <Typography color='textSecondary' gutterBottom>
-                command: !recommend
-              </Typography>
-              <Typography component='p'>
-                You can see better set equipment for the valkyrie too...
-              </Typography>
-            </div>
-          </Grid>
-        </Grid>
+        ])}
       </div>
     )
   } 
