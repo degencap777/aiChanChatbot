@@ -7,10 +7,10 @@ import Typography from 'material-ui/Typography'
 import Divider from 'material-ui/Divider'
 import Card, {CardContent} from 'material-ui/Card'
 
-import * as WeaponDemo from '../../asset/weapon-demo.png'
-import * as GachaDemo from '../../asset/gacha-demo.png'
-import * as ValkyrieDemo from '../../asset/valkyrie-demo.png'
-import * as RecommendationDemo from '../../asset/recommendation-demo.png'
+import * as WeaponDemo from '../../asset/img/weapon-demo.png'
+import * as GachaDemo from '../../asset/img/gacha-demo.png'
+import * as ValkyrieDemo from '../../asset/img/valkyrie-demo.png'
+import * as RecommendationDemo from '../../asset/img/recommendation-demo.png'
 
 const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => ({
   demoRow: {

@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = [process.env.NODE_ENV === 'development'? undefined:{
   mode: process.env.NODE_ENV,
@@ -64,8 +65,12 @@ module.exports = [process.env.NODE_ENV === 'development'? undefined:{
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'index.html'
+      template: 'src/client/index.html'
     }),
+    new CopyWebpackPlugin([{
+      from: 'src/asset/static/**/*',
+      to: '[name].[ext]'
+    }]),
     new webpack.DefinePlugin({
       'PREFIX': JSON.stringify(process.env.PREFIX? process.env.PREFIX : '!')
     })

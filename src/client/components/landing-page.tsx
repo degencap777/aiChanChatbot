@@ -8,7 +8,7 @@ import Typography from 'material-ui/Typography'
 import Divider from 'material-ui/Divider'
 import Button from 'material-ui/Button'
 
-import * as AiChan from '../../asset/ai-chan.png'
+import * as AiChan from '../../asset/img/ai-chan.png'
 import screenStore from '../store/screen'
 import DemoSection from './demo-section'
 import CommandSection from './command-section'

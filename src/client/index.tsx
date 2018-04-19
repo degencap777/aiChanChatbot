@@ -4,7 +4,7 @@ import * as classnames from 'classnames'
 import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles'
 import {lightGreen, green, grey} from 'material-ui/colors'
 
-import LandingPage from './components/landing'
+import LandingPage from './components/landing-page'
 
 const theme = createMuiTheme({
   palette: {
