@@ -73,8 +73,8 @@ class DemoSection extends React.Component<DemoSectionProps, DemoSectionState> {
           ],
           image: RecommendationDemo
         }].map((demo, index) => [
-          index !== 0 && <Divider/>,
-          <Grid container classes={{container:classes.demoRow + (index % 2 === 1? ' ' + classes.demoRowEven : '')} as any}>
+          index !== 0 && <Divider key='divider'/>,
+          <Grid key='demo-row' container classes={{container:classes.demoRow + (index % 2 === 1? ' ' + classes.demoRowEven : '')} as any}>
             <Grid item xs={12} md={6} classes={{item:classes.demoColumn} as any}>
               <div className={classes.description}>
                 <Typography variant='headline' color='primary' component='h2'>
@@ -84,7 +84,7 @@ class DemoSection extends React.Component<DemoSectionProps, DemoSectionState> {
                   {demo.command}
                 </Typography>
                 <Typography component='p'>
-                  {demo.description.map((description, index) => [index !== 0 && <br/>, description])}
+                  {demo.description.map((description, index) => [index !== 0 && <br key='new-line'/>, description])}
                 </Typography>
               </div>
             </Grid>
