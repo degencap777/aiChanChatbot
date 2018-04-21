@@ -3,32 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-module.exports = [process.env.NODE_ENV === 'development'? undefined:{
-  mode: process.env.NODE_ENV,
-  devtool: 'eval',
-  target: 'node',
-  node: {
-    __dirname: false,
-    __filename: false
-  },
-  entry: ['./src/server'],
-  output: {
-    path: path.join(__dirname, 'dist/server'),
-    filename: '[name].bundle.js',
-		publicPath: '/'
-  },
-  resolve: {
-    extensions: ['.js', '.ts', '.tsx']
-  },
-  module: {
-    rules: [{
-      test: /\.tsx?$/,
-      use: [{
-        loader: 'ts-loader'
-      }]
-    }]
-  }
-}, {
+module.exports = {
   mode: process.env.NODE_ENV,
   devtool: 'eval',
   entry: process.env.NODE_ENV === 'development'? [
@@ -36,7 +11,7 @@ module.exports = [process.env.NODE_ENV === 'development'? undefined:{
     './src/client'
   ]:['./src/client'],
   output: {
-    path: path.join(__dirname, 'dist/client'),
+    path: path.join(__dirname, 'docs'),
     filename: '[name].bundle.js',
     chunkFilename: '[name].chunk.js',
 		publicPath: '/'
@@ -75,4 +50,4 @@ module.exports = [process.env.NODE_ENV === 'development'? undefined:{
       'PREFIX': JSON.stringify(process.env.PREFIX? process.env.PREFIX : '!')
     })
   ]
-}].filter(module => !!module)
+}
