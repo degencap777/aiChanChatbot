@@ -9,11 +9,14 @@ import Divider from 'material-ui/Divider'
 import Button from 'material-ui/Button'
 
 import * as AiChan from '../../asset/img/ai-chan.png'
+import * as HonkaiImpact from '../../asset/img/honkai-impact.png'
+import * as Discord from '../../asset/img/discord.png'
 import screenStore from '../store/screen'
 import DemoSection from './demo-section'
 import CommandSection from './command-section'
 
 const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => ({
+  '@import': ['url(https://fonts.googleapis.com/css?family=Righteous)'] as any,
   container: {
     width: '100vw',
     minHeight: '100vh',
@@ -46,6 +49,27 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
     textAlign: 'right',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
       textAlign: 'center'
+    }
+  },
+  headerTextFont: {
+    fontFamily: 'Righteous'
+  },
+  honkaiImpactImage: {
+    display: 'inline-block',
+    height: '80px',
+    margin: '-34px 0',
+    [`@media (max-width:${theme.breakpoints.values.md}px)`]: {
+      height: '60px',
+      margin: '-26px 0',
+    }
+  },
+  discordImage: {
+    display: 'inline-block',
+    height: '42px',
+    margin: '-17px 0',
+    [`@media (max-width:${theme.breakpoints.values.md}px)`]: {
+      height: '32px',
+      margin: '-12px 0',
     }
   },
   aiChanWelcome: {
@@ -99,11 +123,12 @@ class LandingPage extends ReSub.ComponentBase<LandingPageProps, LandingPageState
       <div className={classes.container}>
         <div className={classes.headerContainer}>
           <div className={classes.headerText}>
-            <Typography variant={['sm-tablet', 'xs-phone'].includes(screenType)? 'display3':'display4'} color='secondary'>
-              Ai-Chan Bot
+            <Typography classes={{root:classes.headerTextFont}} variant={['sm-tablet', 'xs-phone'].includes(screenType)? 'display3':'display4'} color='secondary'>
+              Ai Chan
             </Typography>
-            <Typography variant={['sm-tablet', 'xs-phone'].includes(screenType)? 'title':'display1'} color='primary'>
-              comes to your discord
+            <Typography classes={{root:classes.headerTextFont}} variant={['sm-tablet', 'xs-phone'].includes(screenType)? 'subheading':'title'} color='primary'>
+              from <img className={classes.honkaiImpactImage} src={HonkaiImpact}/>
+              comes to <img className={classes.discordImage} src={Discord}/>
             </Typography>
           </div>
           <img src={AiChan} className={classes.aiChanWelcome}/>

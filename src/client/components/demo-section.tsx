@@ -62,7 +62,7 @@ class DemoSection extends React.Component<DemoSectionProps, DemoSectionState> {
           command: 'command: !valkyrie',
           description: [
             'Here is the secret about the gals!',
-            'But however hard you try you will be able to see her panties!'
+            'But however hard you try you will not be able to see her panties!'
           ],
           image: ValkyrieDemo
         }, {
