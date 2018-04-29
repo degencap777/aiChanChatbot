@@ -90,7 +90,9 @@ export default [{
   examples: ['faction', 'faction list'],
   notes: [
     'for first setup need user with manage roles permission to do this command instalation',
-    `use ${PREFIX}faction list to show the member faction list`
+    `use ${PREFIX}faction list to show the member faction list`,
+    'You can\'t change faction after choosing, if you make a mistake you must contact your server administrator/moderators to remove your faction role',
+    `Admin or someone with manage-roles permission need to do <${PREFIX}faction reset> to make all member be able to choose their faction again`
   ]
 }, {
   commands: ['gacha'],
@@ -104,13 +106,111 @@ export default [{
     `For Example: <${PREFIX}gacha focused 8>, or <${PREFIX}gacha 5>`
   ]
 }, {
+  commands: ['PREFIX'],
+  category: 'ADMIN TOOL',
+  description: `Change PREFIX for server`,
+  examples: ['PREFIX <new PREFIX>'],
+  notes: [
+    `This server's PREFIX is ${PREFIX}`,
+    'Only ADMINISTARTOR can change the PREFIX',
+    'space character won\'t work'
+  ]
+}, {
+  commands: ['kiss'],
+  category: 'IMAGE',
+  description: 'Display gif about kissing',
+  examples: ['kiss @someone'],
+  notes: [
+    'Works with multiple mention'
+  ]
+}, {
+  commands: ['lewd'],
+  category: 'IMAGE',
+  description: 'Display gif about lewd',
+  examples: ['lewd @someone'],
+  notes: [
+    'Works with multiple mention'
+  ]
+}, {
+  commands: ['lick'],
+  category: 'IMAGE',
+  description: 'Display gif about lick',
+  examples: ['lick @someone'],
+  notes: [
+    'Works with multiple mention'
+  ]
+}, {
+  commands: ['nyan'],
+  category: 'IMAGE',
+  description: 'Display gif about neko girl nyan~',
+  examples: ['nyan @someone'],
+  notes: [
+    'Works with multiple mention'
+  ]
+}, {
+  commands: ['pat'],
+  category: 'IMAGE',
+  description: 'Display gif about pat',
+  examples: ['pat @someone'],
+  notes: [
+    'Works with multiple mention'
+  ]
+}, {
+  commands: ['pout'],
+  category: 'IMAGE',
+  description: 'Display gif about pout',
+  examples: ['pout @someone'],
+  notes: [
+    'Works with multiple mention'
+  ]
+}, {
+  commands: ['slap'],
+  category: 'IMAGE',
+  description: 'Display gif about slap',
+  examples: ['slap @someone'],
+  notes: [
+    'Works with multiple mention'
+  ]
+}, {
+  commands: ['stare'],
+  category: 'IMAGE',
+  description: 'Display gif about stare',
+  examples: ['stare @someone'],
+  notes: [
+    'Works with multiple mention'
+  ]
+}, {
+  commands: ['wasted'],
+  category: 'IMAGE',
+  description: 'Display gif about wasted',
+  examples: ['wasted @someone'],
+  notes: [
+    'Works with multiple mention'
+  ]
+}, {
+  commands: ['ban'],
+  category: 'ADMIN TOOL',
+  description: 'Ban user from server by mention it',
+  examples: ['ban @someone reason'],
+  notes: [
+    'Only user with BAN_MEMBERS permission can use this command'
+  ]
+}, {
+  commands: ['kick'],
+  category: 'ADMIN TOOL',
+  description: 'Kick user from server by mention it',
+  examples: ['kick @someone reason'],
+  notes: [
+    'Only user with KICK_MEMBERS permission can use this command'
+  ]
+}, {
   commands: ['send'],
   category: 'ADMIN TOOL',
   description: 'Send message to another channel as AI Chan',
   examples: ['send #general message', 'send message', 'send @someone message'],
   notes: [
     `Mention someone will result bot to dm that mentioned user via dm`,
-    `This command doesn't work on multiple command so please only mention one user at one message`
+    `This command doesn't work on multiple mention so please only mention one user at one message`
   ]
 }, {
   commands: ['clear'],
