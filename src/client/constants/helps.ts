@@ -170,14 +170,6 @@ export default [{
     'Works with multiple mention'
   ]
 }, {
-  commands: ['wasted'],
-  category: 'IMAGE',
-  description: 'Display gif about wasted',
-  examples: ['wasted @someone'],
-  notes: [
-    'Works with multiple mention'
-  ]
-}, {
   commands: ['prefix'],
   category: 'ADMIN TOOL',
   description: `Change prefix for server`,
