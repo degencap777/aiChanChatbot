@@ -106,16 +106,6 @@ export default [{
     `For Example: <${PREFIX}gacha focused 8>, or <${PREFIX}gacha 5>`
   ]
 }, {
-  commands: ['PREFIX'],
-  category: 'ADMIN TOOL',
-  description: `Change PREFIX for server`,
-  examples: ['PREFIX <new PREFIX>'],
-  notes: [
-    `This server's PREFIX is ${PREFIX}`,
-    'Only ADMINISTARTOR can change the PREFIX',
-    'space character won\'t work'
-  ]
-}, {
   commands: ['kiss'],
   category: 'IMAGE',
   description: 'Display gif about kissing',
@@ -186,6 +176,16 @@ export default [{
   examples: ['wasted @someone'],
   notes: [
     'Works with multiple mention'
+  ]
+}, {
+  commands: ['prefix'],
+  category: 'ADMIN TOOL',
+  description: `Change prefix for server`,
+  examples: ['prefix <new prefix>'],
+  notes: [
+    `Default prefix is ${PREFIX}`,
+    'Only ADMINISTATOR can change the prefix',
+    'space character won\'t work'
   ]
 }, {
   commands: ['ban'],
