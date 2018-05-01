@@ -59,8 +59,8 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
     height: '80px',
     margin: '-34px 0',
     [`@media (max-width:${theme.breakpoints.values.md}px)`]: {
-      height: '60px',
-      margin: '-26px 0',
+      height: '50px',
+      margin: '-21px 0',
     }
   },
   discordImage: {
@@ -68,8 +68,8 @@ const styles = (theme:Theme):StyleRules<string> | StyleRulesCallback<string> => 
     height: '42px',
     margin: '-17px 0',
     [`@media (max-width:${theme.breakpoints.values.md}px)`]: {
-      height: '32px',
-      margin: '-12px 0',
+      height: '26px',
+      margin: '-9px 0',
     }
   },
   aiChanWelcome: {
