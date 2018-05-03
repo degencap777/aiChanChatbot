@@ -1,4 +1,16 @@
-export default [{
+export default (prefix:string) => [{
+  commands: ['donate'],
+  category: 'SUPPORT',
+  description: 'Display list of our donators',
+  examples: [],
+  notes: []
+}, {
+  commands: ['vote'],
+  category: 'SUPPORT',
+  description: 'Support our bot on [DiscordBots.org](https://discordbots.org/bot/434737143395516416?) by vote',
+  examples: [],
+  notes: []
+}, {
   commands: ['help'],
   category: 'UTILITY',
   description: '',
@@ -35,12 +47,6 @@ export default [{
   examples: ['avatar @Raiden Mei', 'avatar @Raiden Mei @Kiana Kaslana @AI Chan'],
   notes: ['If you not mention anyone bot will show your info instead']
 }, {
-  commands: ['google'],
-  category: 'UTILITY',
-  description: 'Show you the first result of google by an URL',
-  examples: ['google Honkai Impact'],
-  notes: ['Only works with simple result, complicated query will result not found']
-}, {
   commands: ['weapon'],
   category: 'HONKAI IMPACT',
   description: 'Show you detail about a game weapon from Honkai Impact 3rd',
@@ -48,8 +54,8 @@ export default [{
   notes: [
     `If you don't put any query bot will show you menu to browse our weapon gallery`,
     `Tips:`, 
-    `You can just write short name of the weapon like <${PREFIX}weapon Judah> will result <Oath of Judah>`,
-    `You can write initial name of weapon for easy calling like <${PREFIX}weapon 2sr> will result <2nd Sacred Relic>`
+    `You can just write short name of the weapon like <${prefix}weapon Judah> will result <Oath of Judah>`,
+    `You can write initial name of weapon for easy calling like <${prefix}weapon 2sr> will result <2nd Sacred Relic>`
   ]
 }, {
   commands: ['stigma', 'stigmata'],
@@ -59,7 +65,7 @@ export default [{
   notes: [
     `If you don't put any query bot will show you menu to browse our stigmata gallery`,
     `Tips:`,
-    `You don't need to write full name of stigma, for example <${PREFIX}stigmata tesla> will show you result of all stigma with your query`
+    `You don't need to write full name of stigma, for example <${prefix}stigmata tesla> will show you result of all stigma with your query`
   ]
 }, {
   commands: ['valk', 'valkyrie'],
@@ -69,7 +75,7 @@ export default [{
   notes: [
     `If you don't put any query bot will show you menu to browse our valkyrie data`,
     `Tips:`,
-    `You can just type valkyrie initial of battlesuit for fast calling, for example: <${PREFIX}valkyrie SD> will result <Shadow Dash>`,
+    `You can just type valkyrie initial of battlesuit for fast calling, for example: <${prefix}valkyrie SD> will result <Shadow Dash>`,
     `You can tap *⃣ emoji to jump to recommendation setup of valkyrie`
   ]
 }, {
@@ -80,7 +86,7 @@ export default [{
   notes: [
     `If you don't put any query bot will show you menu to browse our valkyrie data`,
     `Tips:`,
-    `You can just type valkyrie initial of battlesuit for fast calling, for example: <${PREFIX}recommendation SD> will result <Shadow Dash>`,
+    `You can just type valkyrie initial of battlesuit for fast calling, for example: <${prefix}recommendation SD> will result <Shadow Dash>`,
     `You can tap #⃣ emoji to jump to detail info about valkyrie`
   ]
 },{
@@ -90,9 +96,9 @@ export default [{
   examples: ['faction', 'faction list'],
   notes: [
     'for first setup need user with manage roles permission to do this command instalation',
-    `use ${PREFIX}faction list to show the member faction list`,
+    `use ${prefix}faction list to show the member faction list`,
     'You can\'t change faction after choosing, if you make a mistake you must contact your server administrator/moderators to remove your faction role',
-    `Admin or someone with manage-roles permission need to do <${PREFIX}faction reset> to make all member be able to choose their faction again`
+    `Admin or someone with manage-roles permission need to do <${prefix}faction reset> to make all member be able to choose their faction again`
   ]
 }, {
   commands: ['gacha'],
@@ -103,7 +109,7 @@ export default [{
     `Not giving any query will result to pull standart supply gacha`,
     `There is cooldown 1 minute after execute this command`,
     `Default number of pull is 10 but you can change it by type the number at the end query`,
-    `For Example: <${PREFIX}gacha focused 8>, or <${PREFIX}gacha 5>`
+    `For Example: <${prefix}gacha focused 8>, or <${prefix}gacha 5>`
   ]
 }, {
   commands: ['kiss'],
@@ -175,8 +181,7 @@ export default [{
   description: `Change prefix for server`,
   examples: ['prefix <new prefix>'],
   notes: [
-    `Default prefix is ${PREFIX}`,
-    'Only ADMINISTATOR can change the prefix',
+    'Only ADMINISTARTOR can change the prefix',
     'space character won\'t work'
   ]
 }, {

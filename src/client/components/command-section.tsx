@@ -59,7 +59,7 @@ class CommandSection extends React.Component<CommandSectionProps, CommandSection
     const {active} = this.state
     return (
       <div className={classes.commandSection}>
-        {helps.map(help =>
+        {helps(PREFIX).map(help =>
           <ExpansionPanel disabled={help.description === ''}
             key={help.commands[0]}
             expanded={help.commands[0] === active}
